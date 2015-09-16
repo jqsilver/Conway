@@ -14,6 +14,9 @@
 		A16A7F5E1BAA08330089BF06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16A7F5C1BAA08330089BF06 /* LaunchScreen.storyboard */; };
 		A16A7F691BAA08330089BF06 /* ConwayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F681BAA08330089BF06 /* ConwayTests.swift */; };
 		A16A7F741BAA08330089BF06 /* ConwayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F731BAA08330089BF06 /* ConwayUITests.swift */; };
+		A16A7F821BAA08960089BF06 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F811BAA08960089BF06 /* BoardView.swift */; settings = {ASSET_TAGS = (); }; };
+		A16A7F841BAA147A0089BF06 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F831BAA147A0089BF06 /* Board.swift */; settings = {ASSET_TAGS = (); }; };
+		A16A7F861BAA196F0089BF06 /* LifeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F851BAA196F0089BF06 /* LifeController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		A16A7F6F1BAA08330089BF06 /* ConwayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16A7F731BAA08330089BF06 /* ConwayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayUITests.swift; sourceTree = "<group>"; };
 		A16A7F751BAA08330089BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A16A7F811BAA08960089BF06 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		A16A7F831BAA147A0089BF06 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		A16A7F851BAA196F0089BF06 /* LifeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +105,10 @@
 			children = (
 				A16A7F531BAA08330089BF06 /* AppDelegate.swift */,
 				A16A7F551BAA08330089BF06 /* ViewController.swift */,
+				A16A7F811BAA08960089BF06 /* BoardView.swift */,
+				A16A7F851BAA196F0089BF06 /* LifeController.swift */,
 				A16A7F571BAA08330089BF06 /* Main.storyboard */,
+				A16A7F831BAA147A0089BF06 /* Board.swift */,
 				A16A7F5A1BAA08330089BF06 /* Assets.xcassets */,
 				A16A7F5C1BAA08330089BF06 /* LaunchScreen.storyboard */,
 				A16A7F5F1BAA08330089BF06 /* Info.plist */,
@@ -255,7 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16A7F821BAA08960089BF06 /* BoardView.swift in Sources */,
 				A16A7F561BAA08330089BF06 /* ViewController.swift in Sources */,
+				A16A7F841BAA147A0089BF06 /* Board.swift in Sources */,
+				A16A7F861BAA196F0089BF06 /* LifeController.swift in Sources */,
 				A16A7F541BAA08330089BF06 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

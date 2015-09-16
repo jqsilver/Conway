@@ -38,16 +38,6 @@
                ReferencedContainer = "container:Conway.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A16A7F6E1BAA08330089BF06"
-               BuildableName = "ConwayUITests.xctest"
-               BlueprintName = "ConwayUITests"
-               ReferencedContainer = "container:Conway.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

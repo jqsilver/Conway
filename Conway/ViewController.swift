@@ -5,6 +5,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     
     let life = LifeController()
+    var timer: NSTimer!
     var board: [[Bool]]!
     
     override func viewDidLoad() {
@@ -16,24 +17,21 @@ class ViewController: UIViewController {
             Array(count: 10, repeatedValue: false)
         )
         
+        board[3][5] = true
+        board[4][5] = true
         board[5][5] = true
-        board[5][6] = true
-        board[6][5] = true
-        board[6][6] = true
         boardView.updateWithBoard(board)
     }
     
     func startPressed() {
+        assert(NSThread.isMainThread())
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "nextStep", userInfo: nil, repeats: true)
+    }
+    
+    func nextStep() {
         let nextBoard = life.nextBoard(board)
         boardView.updateWithBoard(nextBoard)
         board = nextBoard
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

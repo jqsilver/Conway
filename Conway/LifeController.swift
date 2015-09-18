@@ -1,6 +1,8 @@
 import Foundation
 
 class LifeController {
+    // TODO: try making a Stream of states using one/each of the FRP libraries
+    
     func nextBoard(board: [[Bool]]) -> [[Bool]] {
         var next = board
         for i in 0..<board.count {

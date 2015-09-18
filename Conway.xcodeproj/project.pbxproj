@@ -17,6 +17,7 @@
 		A16A7F821BAA08960089BF06 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F811BAA08960089BF06 /* BoardView.swift */; settings = {ASSET_TAGS = (); }; };
 		A16A7F841BAA147A0089BF06 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F831BAA147A0089BF06 /* Board.swift */; settings = {ASSET_TAGS = (); }; };
 		A16A7F861BAA196F0089BF06 /* LifeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F851BAA196F0089BF06 /* LifeController.swift */; settings = {ASSET_TAGS = (); }; };
+		A1E525251BAB40CC00FF315F /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E525241BAB40CC00FF315F /* BoardCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A16A7F811BAA08960089BF06 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		A16A7F831BAA147A0089BF06 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A16A7F851BAA196F0089BF06 /* LifeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeController.swift; sourceTree = "<group>"; };
+		A1E525241BAB40CC00FF315F /* BoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				A16A7F531BAA08330089BF06 /* AppDelegate.swift */,
 				A16A7F551BAA08330089BF06 /* ViewController.swift */,
+				A1E525241BAB40CC00FF315F /* BoardCell.swift */,
 				A16A7F811BAA08960089BF06 /* BoardView.swift */,
 				A16A7F851BAA196F0089BF06 /* LifeController.swift */,
 				A16A7F571BAA08330089BF06 /* Main.storyboard */,
@@ -268,6 +271,7 @@
 				A16A7F561BAA08330089BF06 /* ViewController.swift in Sources */,
 				A16A7F841BAA147A0089BF06 /* Board.swift in Sources */,
 				A16A7F861BAA196F0089BF06 /* LifeController.swift in Sources */,
+				A1E525251BAB40CC00FF315F /* BoardCell.swift in Sources */,
 				A16A7F541BAA08330089BF06 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +499,7 @@
 				A16A7F7A1BAA08330089BF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A16A7F7B1BAA08330089BF06 /* Build configuration list for PBXNativeTarget "ConwayTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +508,7 @@
 				A16A7F7D1BAA08330089BF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A16A7F7E1BAA08330089BF06 /* Build configuration list for PBXNativeTarget "ConwayUITests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +517,7 @@
 				A16A7F801BAA08330089BF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

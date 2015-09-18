@@ -1,16 +1,23 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BoardCellDelegate {
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var startButton: UIButton!
     
+    
+    var running: Bool = false
     let life = LifeController()
-    var timer: NSTimer!
+    weak var timer: NSTimer?
     var board: [[Bool]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        boardView.delegate = self
+        
+        startButton.setTitle("Start", forState: .Normal)
+        startButton.setTitle("Stop", forState: .Selected)
+        
         startButton.addTarget(self, action: "startPressed", forControlEvents: .TouchUpInside)
         
         board = Array(count: 10, repeatedValue:
@@ -24,14 +31,32 @@ class ViewController: UIViewController {
     }
     
     func startPressed() {
-        assert(NSThread.isMainThread())
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "nextStep", userInfo: nil, repeats: true)
+        if running {
+            startButton.selected = false
+            running = false
+            timer?.invalidate()
+        } else {
+            startButton.selected = true
+            running = true
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "nextStep", userInfo: nil, repeats: true)
+        }
     }
     
     func nextStep() {
         let nextBoard = life.nextBoard(board)
         boardView.updateWithBoard(nextBoard)
         board = nextBoard
+    }
+    
+    func boardCellTapped(cell: BoardCell) {
+        // Only allow tapping when not running the simulation
+        guard !running else { return }
+
+        // update the model, then pass the model to the view
+        let (i, j) = cell.index
+        board[i][j] = !cell.isAlive
+        
+        boardView.updateWithBoard(board)
     }
 }
 

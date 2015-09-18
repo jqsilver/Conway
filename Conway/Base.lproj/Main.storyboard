@@ -22,8 +22,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3D-4j-SoT">
-                                <rect key="frame" x="284" y="20" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
+                                <rect key="frame" x="283" y="20" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

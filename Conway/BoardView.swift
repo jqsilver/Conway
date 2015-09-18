@@ -1,6 +1,12 @@
 import UIKit
 
 class BoardView: UIView {
+    weak var delegate: BoardCellDelegate? = nil {
+        didSet {
+            forAllCells { $0.delegate = self.delegate }
+        }
+    }
+    
     let cellDimension = 10
     var cells = [[BoardCell]]()
     
@@ -12,10 +18,10 @@ class BoardView: UIView {
     private func initCells() {
         // TODO: do some acrobatics to try to make cells immutable
         cells = [[BoardCell]]()
-        for _ in 0..<cellDimension {
+        for i in 0..<cellDimension {
             var row = [BoardCell]()
-            for _ in 0..<cellDimension {
-                let cell = BoardCell()
+            for j in 0..<cellDimension {
+                let cell = BoardCell(index: (i, j))
                 self.addSubview(cell)
                 row.append(cell)
             }
@@ -69,25 +75,6 @@ class BoardView: UIView {
     }
 }
 
-class BoardCell: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layer.borderColor = UIColor.grayColor().CGColor
-        layer.borderWidth = 1
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func live() {
-        backgroundColor = UIColor.blueColor()
-    }
-    
-    func die() {
-        backgroundColor = UIColor.whiteColor()
-    }
-}
 
 // just wrote this 'cause I wish it were a constructor
 func BuildArray<Element>(count: Int, generate: () -> Element) -> [Element] {

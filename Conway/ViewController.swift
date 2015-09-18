@@ -4,11 +4,10 @@ class ViewController: UIViewController, BoardCellDelegate {
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var startButton: UIButton!
     
-    
-    var running: Bool = false
     let life = LifeController()
     weak var timer: NSTimer?
     var board: [[Bool]]!
+    var running: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +17,7 @@ class ViewController: UIViewController, BoardCellDelegate {
         startButton.setTitle("Start", forState: .Normal)
         startButton.setTitle("Stop", forState: .Selected)
         
+        // TODO could also do some FRP stuff here
         startButton.addTarget(self, action: "startPressed", forControlEvents: .TouchUpInside)
         
         board = Array(count: 10, repeatedValue:
@@ -32,14 +32,22 @@ class ViewController: UIViewController, BoardCellDelegate {
     
     func startPressed() {
         if running {
-            startButton.selected = false
-            running = false
-            timer?.invalidate()
+            stopLife()
         } else {
-            startButton.selected = true
-            running = true
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "nextStep", userInfo: nil, repeats: true)
+            startLife()
         }
+    }
+    
+    func startLife() {
+        startButton.selected = true
+        running = true
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "nextStep", userInfo: nil, repeats: true)
+    }
+    
+    func stopLife() {
+        startButton.selected = false
+        running = false
+        timer?.invalidate()
     }
     
     func nextStep() {

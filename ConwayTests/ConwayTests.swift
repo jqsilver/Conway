@@ -34,5 +34,14 @@ class ConwayTests: XCTestCase {
         XCTAssertEqual(neighborCount, 8)
     }
 
+    func testMakeArray2D() {
+        let grid = MakeArray2D(2, numPerRow: 3, value: true)
+        
+        let expected = [
+            [true, true, true],
+            [true, true, true],
+        ]
+        XCTAssertEqual(grid, expected)
+    }
     
 }

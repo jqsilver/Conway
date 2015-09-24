@@ -20,13 +20,8 @@ class ViewController: UIViewController, BoardCellDelegate {
         // TODO could also do some FRP stuff here
         startButton.addTarget(self, action: "startPressed", forControlEvents: .TouchUpInside)
         
-        board = Array(count: 10, repeatedValue:
-            Array(count: 10, repeatedValue: false)
-        )
+        board = MakeArray2D(10, numPerRow: 10, value: false)
         
-        board[3][5] = true
-        board[4][5] = true
-        board[5][5] = true
         boardView.updateWithBoard(board)
     }
     

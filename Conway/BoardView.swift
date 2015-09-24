@@ -1,9 +1,11 @@
 import UIKit
 
 class BoardView: UIView {
-    weak var delegate: BoardCellDelegate? = nil {
+    weak var delegate: BoardCellDelegate? {
         didSet {
-            forAllCells { $0.delegate = self.delegate }
+            cells.enumerate2d { _, _, cell in
+                cell.delegate = self.delegate
+            }
         }
     }
     
@@ -18,40 +20,25 @@ class BoardView: UIView {
     private func initCells() {
         // TODO: do some acrobatics to try to make cells immutable
         cells = [[BoardCell]]()
-        for i in 0..<cellDimension {
-            var row = [BoardCell]()
-            for j in 0..<cellDimension {
-                let cell = BoardCell(index: (i, j))
-                self.addSubview(cell)
-                row.append(cell)
-            }
-            cells.append(row)
+        
+        cells = GenerateArray2D(cellDimension, numPerRow: cellDimension) { i, j in
+            return BoardCell(index: (i, j))
         }
-
+        
+        cells.enumerate2d { i, j, cell in
+            self.addSubview(cell)
+        }
     }
     
     func updateWithBoard(board: [[Bool]]) {
         // TODO: worry about mismatched dimensions
         
-        for (i, row) in board.enumerate() {
-            for (j, isAlive) in row.enumerate() {
-                if isAlive {
-                    cells[i][j].live()
-                } else {
-                    cells[i][j].die()
-                }
-            }
+        board.enumerate2d { i, j, isAlive in
+            cells[i][j].isAlive = isAlive
         }
     }
         
-    func forAllCells(block: BoardCell -> Void) {
-        for row in cells {
-            for cell in row {
-                block(cell)
-            }
-        }
-    }
-    
+   
     // TODO: make this a global utility or something
     func forAllCellsWithIndices(block: (BoardCell, Int, Int) -> Void) {
         for (i, row) in cells.enumerate() {
@@ -65,7 +52,7 @@ class BoardView: UIView {
         let dimension = min(self.bounds.width, self.bounds.height)
         let cellSize = dimension / CGFloat(cellDimension)
         
-        forAllCellsWithIndices { cell, i, j in
+        cells.enumerate2d { i, j, cell in
             let x = cellSize * CGFloat(i)
             let y = cellSize * CGFloat(j)
             

@@ -18,6 +18,7 @@
 		A16A7F841BAA147A0089BF06 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F831BAA147A0089BF06 /* Board.swift */; settings = {ASSET_TAGS = (); }; };
 		A16A7F861BAA196F0089BF06 /* LifeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A7F851BAA196F0089BF06 /* LifeController.swift */; settings = {ASSET_TAGS = (); }; };
 		A1E525251BAB40CC00FF315F /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E525241BAB40CC00FF315F /* BoardCell.swift */; settings = {ASSET_TAGS = (); }; };
+		A1E525271BABA4FA00FF315F /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E525261BABA4FA00FF315F /* Array2D.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		A16A7F831BAA147A0089BF06 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A16A7F851BAA196F0089BF06 /* LifeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeController.swift; sourceTree = "<group>"; };
 		A1E525241BAB40CC00FF315F /* BoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		A1E525261BABA4FA00FF315F /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A16A7F531BAA08330089BF06 /* AppDelegate.swift */,
+				A1E525261BABA4FA00FF315F /* Array2D.swift */,
 				A16A7F551BAA08330089BF06 /* ViewController.swift */,
 				A1E525241BAB40CC00FF315F /* BoardCell.swift */,
 				A16A7F811BAA08960089BF06 /* BoardView.swift */,
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E525271BABA4FA00FF315F /* Array2D.swift in Sources */,
 				A16A7F821BAA08960089BF06 /* BoardView.swift in Sources */,
 				A16A7F561BAA08330089BF06 /* ViewController.swift in Sources */,
 				A16A7F841BAA147A0089BF06 /* Board.swift in Sources */,

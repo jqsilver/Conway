@@ -10,7 +10,13 @@ class BoardCell: UIView {
     let index: (Int, Int)
     
     var isAlive: Bool {
-        return self.backgroundColor == UIColor.blueColor()
+        get {
+            return self.backgroundColor == UIColor.blueColor()
+        }
+        
+        set(alive) {
+            self.backgroundColor = alive ? UIColor.blueColor() : UIColor.whiteColor()
+        }
     }
     
     init(index: (Int, Int)) {
@@ -30,13 +36,5 @@ class BoardCell: UIView {
     
     func onTap() {
         delegate?.boardCellTapped(self)
-    }
-    
-    func live() {
-        backgroundColor = UIColor.blueColor()
-    }
-    
-    func die() {
-        backgroundColor = UIColor.whiteColor()
     }
 }

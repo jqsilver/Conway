@@ -17,21 +17,38 @@ func MakeArray2D<Element>(numRows: Int, numPerRow: Int, value: Element) -> [[Ele
 }
 
 func GenerateArray2D<Element>(numRows: Int, numPerRow: Int, valueGenerator: (Int, Int) -> Element) -> [[Element]] {
-    var arr2d = [[Element]]()
-    for i in 0..<numRows {
-        var row = [Element]()
-        for j in 0..<numPerRow {
-            row.append(valueGenerator(i, j))
+    
+    return (0..<numRows).map { i in
+        (0..<numPerRow).map { j in
+            valueGenerator(i, j)
         }
-        arr2d.append(row)
     }
-    return arr2d
 }
 
-struct BlockGenerator<Element> {
+// just wrote this 'cause I wish it were a constructor
+// There must be a way to convert generate into a SequenceType
+func GenerateArray<Element>(count: Int, generate: () -> Element) -> [Element] {
+    return (0..<count).map { _ in generate() }
+}
 
-    let block: () -> Element
-    mutating func next() -> Element? {
-        return block()
+extension Array {
+    func toroidalGet(idx: Int) -> Element {
+        if idx < 0 {
+            return self[self.count + idx]
+        } else if idx >= self.count {
+            return self[idx - self.count]
+        } else {
+            return self[idx]
+        }
+    }
+    
+    func cross<OtherElem>(other: [OtherElem]) -> [(Element, OtherElem)] {
+        
+        return self.flatMap { (elem: Element) -> [(Element, OtherElem)] in
+            let othersWithElem = other.map { otherElem in
+                return (elem, otherElem)
+            }
+            return othersWithElem
+        }
     }
 }

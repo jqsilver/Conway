@@ -6,7 +6,7 @@ class ViewController: UIViewController, BoardCellDelegate {
     
     let life = LifeController()
     weak var timer: NSTimer?
-    var board: [[Bool]]!
+    var board: Board!
     var running: Bool = false
     
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class ViewController: UIViewController, BoardCellDelegate {
         // TODO could also do some FRP stuff here
         startButton.addTarget(self, action: "startPressed", forControlEvents: .TouchUpInside)
         
-        board = MakeArray2D(10, numPerRow: 10, value: false)
+        board = Board(dimension: 10)
         
         boardView.updateWithBoard(board)
     }
@@ -56,8 +56,7 @@ class ViewController: UIViewController, BoardCellDelegate {
         guard !running else { return }
 
         // update the model, then pass the model to the view
-        let (i, j) = cell.index
-        board[i][j] = !cell.isAlive
+        board.setValue(!cell.isAlive, atIndex: cell.index)
         
         boardView.updateWithBoard(board)
     }

@@ -10,7 +10,7 @@ class BoardView: UIView {
     }
     
     let cellDimension = 10
-    var cells = [[BoardCell]]()
+    var cells: [[BoardCell]]!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,23 +30,14 @@ class BoardView: UIView {
         }
     }
     
-    func updateWithBoard(board: [[Bool]]) {
-        // TODO: worry about mismatched dimensions
+    func updateWithBoard(board: Board) {
+        // TODO: ensure properly matched dimensions
         
-        board.enumerate2d { i, j, isAlive in
+        board.enumerateCells { (i, j, isAlive) in
             cells[i][j].isAlive = isAlive
         }
     }
-        
-   
-    // TODO: make this a global utility or something
-    func forAllCellsWithIndices(block: (BoardCell, Int, Int) -> Void) {
-        for (i, row) in cells.enumerate() {
-            for (j, cell) in row.enumerate() {
-                block(cell, i, j)
-            }
-        }
-    }
+    
     
     override func layoutSubviews() {
         let dimension = min(self.bounds.width, self.bounds.height)
@@ -60,14 +51,4 @@ class BoardView: UIView {
         }
 
     }
-}
-
-
-// just wrote this 'cause I wish it were a constructor
-func BuildArray<Element>(count: Int, generate: () -> Element) -> [Element] {
-    var arr = [Element]()
-    for _ in 0..<count {
-        arr.append(generate())
-    }
-    return arr
 }

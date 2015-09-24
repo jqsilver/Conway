@@ -28,7 +28,10 @@ func GenerateArray2D<Element>(numRows: Int, numPerRow: Int, valueGenerator: (Int
 // just wrote this 'cause I wish it were a constructor
 // There must be a way to convert generate into a SequenceType
 func GenerateArray<Element>(count: Int, generate: () -> Element) -> [Element] {
-    return (0..<count).map { _ in generate() }
+    
+    // for some bizarre reason I can't pass a function of type () -> Element when it wants a function of type () -> Element?
+    let sequence = AnySequence(anyGenerator({ generate($0) }))
+    return Array(sequence.prefix(count))
 }
 
 extension Array {

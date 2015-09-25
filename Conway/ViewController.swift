@@ -1,13 +1,16 @@
 import UIKit
+import ReactKit
 
 class ViewController: UIViewController, BoardCellDelegate {
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var startButton: UIButton!
     
     let life = LifeController()
-    weak var timer: NSTimer?
     var board: Board!
     var running: Bool = false
+    
+    var timerStream: Stream<Void>?
+    var lifeStream: Stream<Board>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,8 @@ class ViewController: UIViewController, BoardCellDelegate {
         board = Board(dimension: 10)
         
         boardView.updateWithBoard(board)
+        
+        lifeStream = life.lifeStream(board)
     }
     
     func startPressed() {
@@ -36,13 +41,20 @@ class ViewController: UIViewController, BoardCellDelegate {
     func startLife() {
         startButton.selected = true
         running = true
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "nextStep", userInfo: nil, repeats: true)
+        
+        timerStream = NSTimer.stream(timeInterval: 0.5) { timer in
+            return
+        }
+        
+        self.nextStep <~ timerStream!
     }
     
     func stopLife() {
         startButton.selected = false
         running = false
-        timer?.invalidate()
+        
+        timerStream?.cancel()
+        timerStream = nil
     }
     
     func nextStep() {
@@ -59,6 +71,9 @@ class ViewController: UIViewController, BoardCellDelegate {
         board.setValue(!cell.isAlive, atIndex: cell.index)
         
         boardView.updateWithBoard(board)
+        
+        // reset the lifeStream
+        lifeStream = life.lifeStream(board)
     }
 }
 

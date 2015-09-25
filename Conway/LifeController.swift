@@ -1,7 +1,14 @@
 import Foundation
+import ReactKit
 
 class LifeController {
     // TODO: try making a Stream of states using one/each of the FRP libraries
+    
+    func lifeStream(initialBoard: Board) -> Stream<Board> {
+        return Stream.infiniteSequence(initialBoard) {
+            return self.nextBoard($0)
+        }
+    }
     
     func nextBoard(board: Board) -> Board {
         var next = Board(dimension: board.dimension)

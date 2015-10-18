@@ -6,10 +6,10 @@ class ViewController: UIViewController, BoardCellDelegate {
     @IBOutlet weak var startButton: UIButton!
     
     let life = LifeController()
-    var board: Board!
+    var initialBoard: Board!
     var running: Bool = false
     
-    var timerStream: Stream<Void>?
+    var timerStream: Stream<Void>!
     var lifeStream: Stream<Board>!
     
     override func viewDidLoad() {
@@ -23,11 +23,11 @@ class ViewController: UIViewController, BoardCellDelegate {
         // TODO could also do some FRP stuff here
         startButton.addTarget(self, action: "startPressed", forControlEvents: .TouchUpInside)
         
-        board = Board(dimension: 10)
+        initialBoard = Board(dimension: 10)
         
-        boardView.updateWithBoard(board)
+        boardView.updateWithBoard(initialBoard)
         
-        lifeStream = life.lifeStream(board)
+        lifeStream = life.lifeStream(initialBoard)
     }
     
     func startPressed() {
@@ -45,8 +45,9 @@ class ViewController: UIViewController, BoardCellDelegate {
         timerStream = NSTimer.stream(timeInterval: 0.5) { timer in
             return
         }
-        
-        self.nextStep <~ timerStream!
+  
+
+        self.nextStep <~ timerStream
     }
     
     func stopLife() {
@@ -58,9 +59,12 @@ class ViewController: UIViewController, BoardCellDelegate {
     }
     
     func nextStep() {
-        let nextBoard = life.nextBoard(board)
-        boardView.updateWithBoard(nextBoard)
-        board = nextBoard
+        /**
+        // This always takes the first element in the stream and never actually gets to the second one
+        lifeStream |> take(1) ~>! { nextBoard in
+            self.boardView.updateWithBoard(nextBoard)
+        }
+        */
     }
     
     func boardCellTapped(cell: BoardCell) {
@@ -68,12 +72,12 @@ class ViewController: UIViewController, BoardCellDelegate {
         guard !running else { return }
 
         // update the model, then pass the model to the view
-        board.setValue(!cell.isAlive, atIndex: cell.index)
+        initialBoard.setValue(!cell.isAlive, atIndex: cell.index)
         
-        boardView.updateWithBoard(board)
+        boardView.updateWithBoard(initialBoard)
         
         // reset the lifeStream
-        lifeStream = life.lifeStream(board)
+        lifeStream = life.lifeStream(initialBoard)
     }
 }
 
